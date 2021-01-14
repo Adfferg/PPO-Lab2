@@ -8,11 +8,16 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         style="@style/Toolbar"/>
-
     <Button
         android:id="@+id/addTimerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Добавить таймер" />
+    <ListView
+        android:id="@+id/listWithTimers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
 
 </LinearLayout>

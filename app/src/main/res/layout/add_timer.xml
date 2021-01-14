@@ -19,30 +19,28 @@
                 android:text="@string/add_timer_title" />
             <TextView
                 android:gravity="center"
-                android:id="@+id/textView8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/add_timer_preparations" />
-
-            <EditText
-                android:id="@+id/editText8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:gravity="center"
-                android:inputType="numberDecimal"
-                android:selectAllOnFocus="true"
-                android:text="@string/add_timer_starting_value" />
-
-            <TextView
-                android:gravity="center"
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/add_timer_name" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/nameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="center"
+                android:selectAllOnFocus="true"
+                android:text="@string/add_timer_starting_name" />
+            <TextView
+                android:gravity="center"
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_timer_preparations" />
+
+            <EditText
+                android:id="@+id/preparationEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -50,7 +48,6 @@
                 android:inputType="numberDecimal"
                 android:selectAllOnFocus="true"
                 android:text="@string/add_timer_starting_value" />
-
             <TextView
                 android:gravity="center"
                 android:id="@+id/textView3"
@@ -59,7 +56,7 @@
                 android:text="@string/add_timer_working_time" />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/workingTimeEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -76,7 +73,7 @@
                 android:text="@string/add_timer_rest" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/restEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -93,7 +90,7 @@
                 android:text="@string/add_timer_cycles" />
 
             <EditText
-                android:id="@+id/editText5"
+                android:id="@+id/cyclesEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -110,7 +107,7 @@
                 android:text="@string/add_timer_sets" />
 
             <EditText
-                android:id="@+id/editText6"
+                android:id="@+id/setsEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -127,7 +124,7 @@
                 android:text="@string/add_timer_rest_between_sets" />
 
             <EditText
-                android:id="@+id/editText7"
+                android:id="@+id/restBetweenSetsEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -135,6 +132,18 @@
                 android:inputType="numberDecimal"
                 android:selectAllOnFocus="true"
                 android:text="@string/add_timer_starting_value" />
+
+            <Button
+                android:id="@+id/colorButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_timer_color" />
+
+            <Button
+                android:id="@+id/saveTimerButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_timer_save" />
 
 
         </LinearLayout>
