@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
         adapter.Open();
 
         List<TimerSequence> sequences = adapter.GetItems();
-        ListWithTimersAdapter arrayAdapter = new ListWithTimersAdapter(this, R.layout.list_with_timers_item, sequences);
-        listWithTimers.setAdapter(arrayAdapter);
+        ListWithTimersAdapter listWithTimersAdapter = new ListWithTimersAdapter(this, R.layout.list_with_timers_item, sequences);
+        listWithTimers.setAdapter(listWithTimersAdapter);
         adapter.Close();
     }
     public void OpenNewActivity(){

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:id="@+id/itemWithTimersLinearLayout">
@@ -10,19 +11,22 @@
         android:id="@+id/itemTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:layout_weight="5"
+        android:textSize="18sp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/changeItemButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/list_with_timers_item_change" />
+        android:text="@string/list_with_timers_item_change"
+        app:srcCompat="@android:drawable/ic_menu_edit"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/deleteItemButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/list_with_timers_item_delete" />
+        android:text="@string/list_with_timers_item_delete"
+        app:srcCompat="@android:drawable/ic_menu_delete"/>
 </LinearLayout>

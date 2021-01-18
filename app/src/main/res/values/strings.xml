@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Timer</string>
     <string name="add_timer_title">Добавление таймера</string>
+    <string name="add_timer_changing_title">Изменение таймера</string>
     <string name="add_timer_name">Имя таймера</string>
     <string name="add_timer_preparations">Подготовка</string>
     <string name="add_timer_working_time">Время работы</string>
@@ -11,8 +12,14 @@
     <string name="add_timer_color">Выбрать цвет</string>
     <string name="add_timer_save">Добавить таймер</string>
     <string name="add_timer_update">Обновить таймер</string>
-    <string name="add_timer_starting_value">0</string>
+    <string name="add_timer_starting_value">10</string>
     <string name="add_timer_starting_name">Таймер</string>
     <string name="list_with_timers_item_delete">Удалить</string>
     <string name="list_with_timers_item_change">Изменить</string>
+    <string name="no">Нет</string>
+    <string name="yes">Да</string>
+    <string name="finishTraining">Закончить тренировку</string>
+    <string name="finishTrainingSure">Хотите закончить тренировку?</string>
+    <string name="finish">Конец</string>
+
 </resources>

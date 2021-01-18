@@ -5,10 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DbSettings extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "timers.db"; // название бд
-    private static final int SCHEMA = 1; // версия базы данных
-    static final String TABLE = "timers"; // название таблицы в бд
-    // названия столбцов
+    private static final String DATABASE_NAME = "timers.db";
+    private static final int SCHEMA = 1;
+    static final String TABLE = "timers";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_COLOR = "color";
     public static final String COLUMN_NAME = "name";

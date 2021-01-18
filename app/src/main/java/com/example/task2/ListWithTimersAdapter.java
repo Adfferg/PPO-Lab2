@@ -46,6 +46,19 @@ public class ListWithTimersAdapter extends ArrayAdapter<TimerSequence> {
         itemInListView.itemTextView.setText(sequence.name);
 
         itemInListView.itemWithTimersLinearLayout.setBackgroundColor(sequence.color);
+        itemInListView.itemWithTimersLinearLayout.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                if(sequence!=null)
+                {
+                    Intent intent = new Intent(context, TimerActivity.class);
+                    intent.putExtra("id", sequence.id);
+                    context.startActivity(intent);
+                }
+            }
+        });
         itemInListView.deleteItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,7 +73,6 @@ public class ListWithTimersAdapter extends ArrayAdapter<TimerSequence> {
             public void onClick(View view) {
                 Intent intent = new Intent(context, AddTimer.class);
                 intent.putExtra("id", sequence.id);
-                intent.putExtra("click", 25);
                 context.startActivity(intent);
             }
         });

@@ -7,6 +7,7 @@ import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +35,7 @@ public class AddTimer extends AppCompatActivity {
         restBetweenSetsEditText = findViewById(R.id.restBetweenSetsEditText);
         Button colorButton = findViewById(R.id.colorButton);
         Button saveTimerButton = findViewById(R.id.saveTimerButton);
+        TextView addTimerTitle = findViewById(R.id.addTimerTitle);
         dbAdapter = new DbAdapter(this);
         colorButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +83,8 @@ public class AddTimer extends AppCompatActivity {
             restBetweenSetsEditText.setText(String.valueOf(sequence.restBetweenSets));
             color = sequence.color;
             dbAdapter.Close();
-            saveTimerButton.setText("@string/add_timer_starting_value");
+            saveTimerButton.setText(R.string.list_with_timers_item_change);
+            addTimerTitle.setText(R.string.add_timer_changing_title);
 
         }
     }

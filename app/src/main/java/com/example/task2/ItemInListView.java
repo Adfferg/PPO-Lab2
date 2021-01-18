@@ -1,14 +1,14 @@
 package com.example.task2;
 
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ItemInListView {
     final TextView itemTextView;
     final LinearLayout itemWithTimersLinearLayout;
-    final Button changeItemButton,deleteItemButton;
+    final ImageButton changeItemButton,deleteItemButton;
     ItemInListView(View view)
     {
         itemTextView = view.findViewById(R.id.itemTextView);
