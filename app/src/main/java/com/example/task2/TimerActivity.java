@@ -41,6 +41,7 @@ public class TimerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timer);
+        TextView blankTextView = findViewById(R.id.blankTextView);
         timeLeftTextView = findViewById(R.id.timeLeftTextView);
         stagesListView = findViewById(R.id.stagesListView);
         stageNameTextView = findViewById(R.id.stageNameTextView);
@@ -49,7 +50,6 @@ public class TimerActivity extends AppCompatActivity {
         ImageButton nextStageButton = findViewById(R.id.nextStageButton);
         ImageButton backButton = findViewById(R.id.backButton);
         progressBar = findViewById(R.id.progress);
-
         sp = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
         soundIdBell = sp.load(this, R.raw.warning, 1);
 
@@ -108,6 +108,7 @@ public class TimerActivity extends AppCompatActivity {
             cycles = sequence.cycles;
             sets = sequence.sets;
             restBetweenSets = sequence.restBetweenSets;
+            blankTextView.setBackgroundColor(sequence.color);
             adapter.Close();
         }
 
@@ -237,9 +238,7 @@ public class TimerActivity extends AppCompatActivity {
             }
             timeLeftTextView.setText(R.string.finish);
             stageNameTextView.setText(R.string.finish);
-        } else if (stage == amountOfStages) {
-
-        } else {
+        } else if (stage != amountOfStages) {
             stage++;
             startTimer();
         }
