@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:orientation="horizontal"
-    android:padding="1dp">
+    android:padding="1dp"
+    >
 
     <TextView
-        android:id="@+id/tvItem"
+        android:id="@+id/stageItem"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="9"
         android:gravity="center_vertical"
-        android:textSize="14sp"
-        android:background="@drawable/stroke"/>
+        android:textSize="14sp"/>
 </LinearLayout>

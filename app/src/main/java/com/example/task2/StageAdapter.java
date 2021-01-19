@@ -27,9 +27,9 @@ public class StageAdapter extends ArrayAdapter<Pair<String, Integer>>
     public View getView(int pos, View convertView, ViewGroup parent)
     {
         View view=inflater.inflate(this.layout, parent, false);
-        TextView tvItem = (TextView) view.findViewById(R.id.tvItem);
+        TextView stageItem = (TextView) view.findViewById(R.id.stageItem);
         Pair<String, Integer> item = items.get(pos);
-        tvItem.setText(" "+(pos+1)+". "+item.first + " - " + item.second);
+        stageItem.setText(" "+(pos+1)+". "+item.first + " - " + item.second);
         return view;
     }
 }

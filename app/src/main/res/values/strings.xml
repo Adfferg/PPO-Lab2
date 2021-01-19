@@ -18,8 +18,16 @@
     <string name="list_with_timers_item_change">Изменить</string>
     <string name="no">Нет</string>
     <string name="yes">Да</string>
-    <string name="finishTraining">Закончить тренировку</string>
+    <string name="finishTraining">Выйти</string>
     <string name="finishTrainingSure">Хотите закончить тренировку?</string>
     <string name="finish">Конец</string>
+    <string name="add_timer">Добавить таймер</string>
+    <string name="dark_theme">Тёмная тема</string>
+    <string name="language">Язык</string>
+    <string name="now_playing">Сейчас:</string>
+
+    <string name="pref_dark_theme" translatable="false">Тёмная тема</string>
+    <string name="pref_language" translatable="false">Язык</string>
+    <string name="settings">Настойки</string>
 
 </resources>

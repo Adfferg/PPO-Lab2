@@ -1,5 +1,6 @@
 package com.example.task2;
 
+import android.annotation.SuppressLint;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -142,6 +143,7 @@ public class TimerActivity extends AppCompatActivity {
             }
         };
     }
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onResume() {
         super.onResume();
@@ -161,7 +163,7 @@ public class TimerActivity extends AppCompatActivity {
         }
 
         timeLeftTextView.setText(String.valueOf((int) (remainingTime / 1000)));
-        stageNameTextView.setText(stagesInfo.getStageInfo(stage).first);
+        stageNameTextView.setText(getString(R.string.now_playing)+"  "+stagesInfo.getStageInfo(stage).first);
 
         if (!isPause) {
             createTimer();
@@ -220,7 +222,7 @@ public class TimerActivity extends AppCompatActivity {
         if (countDownTimer != null) {
             countDownTimer.cancel();
         }
-        stageNameTextView.setText(stagesInfo.getStageInfo(stage).first);
+        stageNameTextView.setText(getString(R.string.now_playing)+" "+stagesInfo.getStageInfo(stage).first);
         remainingTime = stagesInfo.getStageInfo(stage).second * 1000+1000;
         timeLeftTextView.setText(String.valueOf((int) (remainingTime / 1000)));
         if (!isPause) {
