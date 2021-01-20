@@ -38,19 +38,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         layout=findViewById(R.id.main_layout);
-        SharedPreferences prefs = PreferenceManager
-                .getDefaultSharedPreferences(this);
-        // читаем установленное значение из CheckBoxPreference
-        if (prefs.getBoolean(getString(R.string.pref_dark_theme), false))
-        {
-            AppCompatDelegate.setDefaultNightMode(
-                    AppCompatDelegate.MODE_NIGHT_YES);
-                   }
-        else
-        {
-            AppCompatDelegate.setDefaultNightMode(
-                    AppCompatDelegate.MODE_NIGHT_NO);
-        }
+
     }
 
    @Override
@@ -75,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         List<TimerSequence> sequences = adapter.GetItems();
         ListWithTimersAdapter listWithTimersAdapter = new ListWithTimersAdapter(this, R.layout.list_with_timers_item, sequences);
         listWithTimers.setAdapter(listWithTimersAdapter);
-        adapter.Close();
+
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(this);
         // читаем установленное значение из CheckBoxPreference
@@ -89,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
             AppCompatDelegate.setDefaultNightMode(
                     AppCompatDelegate.MODE_NIGHT_NO);
         }
+
 
     }
     public void OpenNewActivity(){

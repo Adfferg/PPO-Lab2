@@ -25,9 +25,13 @@
     <string name="dark_theme">Тёмная тема</string>
     <string name="language">Язык</string>
     <string name="now_playing">Сейчас:</string>
+    <string name="settings">Настойки</string>
+    <string name="clear_data">Очистить данные</string>
+    <string name="clear_users_data">Хотите очистить все пользовательские данные?</string>
 
     <string name="pref_dark_theme" translatable="false">Тёмная тема</string>
     <string name="pref_language" translatable="false">Язык</string>
-    <string name="settings">Настойки</string>
+    <string name="pref_clear_data" translatable="false">Очистить данные</string>
+
 
 </resources>
