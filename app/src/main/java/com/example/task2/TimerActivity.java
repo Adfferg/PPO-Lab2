@@ -5,6 +5,8 @@ import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
@@ -13,12 +15,16 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.preference.PreferenceManager;
 
 import java.util.ArrayList;
 
@@ -37,6 +43,7 @@ public class TimerActivity extends AppCompatActivity {
     private Intent intent;
     TimerAppService timerAppService;
     private ProgressBar progressBar;
+    private LinearLayout timerButtonsLayout,timerTopLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +57,24 @@ public class TimerActivity extends AppCompatActivity {
         ImageButton previousStageButton = findViewById(R.id.previousStageButton);
         ImageButton nextStageButton = findViewById(R.id.nextStageButton);
         ImageButton backButton = findViewById(R.id.backButton);
+        timerButtonsLayout = findViewById(R.id.timerButtonsLayout);
+        timerTopLayout = findViewById(R.id.timerTopLayout);
         progressBar = findViewById(R.id.progress);
         sp = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
         soundIdBell = sp.load(this, R.raw.warning, 1);
+        setDarkTheme();
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(this);
+        try
+        {
+            float fontSize = Float.parseFloat(prefs.getString(
+                    getString(R.string.pref_font_size), "0"));
+            timeLeftTextView.setTextSize(80+fontSize);
+            stageNameTextView.setTextSize(25+fontSize);
+        }
+        catch(Exception ignored){
 
+        }
         isPause = false;
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,7 +147,7 @@ public class TimerActivity extends AppCompatActivity {
         intent = new Intent(this, TimerAppService.class);
         progressBar.setMax(stagesInfo.getStageInfo(stage).second * 1000);
         progressBar.setProgress(0);
-        ArrayList<Integer> seconds = new ArrayList<Integer>();
+        ArrayList<Integer> seconds = new ArrayList<>();
         for (int i = 0; i < amountOfStages; i++) {
             seconds.add(stagesInfo.getStageInfo(i).second);
         }
@@ -266,7 +287,7 @@ public class TimerActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean("isPause", isPause);
         outState.putInt("stage", stage);
@@ -286,6 +307,20 @@ public class TimerActivity extends AppCompatActivity {
         endTime = savedInstanceState.getLong("endTime");
         if (!isPause) {
             remainingTime = endTime - System.currentTimeMillis();
+        }
+    }
+    private void setDarkTheme(){
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(this) ;
+        if (prefs.getBoolean(getString(R.string.pref_dark_theme), false))
+        {
+            timerButtonsLayout.setBackgroundResource(R.drawable.night_theme);
+            timerTopLayout.setBackgroundResource(R.drawable.night_theme);
+            int textColor = ContextCompat.getColor(this, R.color.colorWhite);
+            timeLeftTextView.setBackgroundResource(R.drawable.night_theme);
+            timeLeftTextView.setTextColor(textColor);
+            stageNameTextView.setBackgroundResource(R.drawable.night_theme);
+            stageNameTextView.setTextColor(textColor);
         }
     }
 }

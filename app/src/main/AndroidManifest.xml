@@ -16,14 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"  android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MainActivity" />
         <service
             android:name=".TimerAppService"
-            android:enabled="true"
-            android:exported="true" />
-        <activity android:name=".AddTimer"  android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".TimerActivity" android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".AppSettings"  android:theme="@style/AppTheme.NoActionBar"/>
+            android:enabled="true" />
+        <activity android:name=".AddTimer"/>
+        <activity android:name=".TimerActivity"/>
+        <activity android:name=".AppSettings"/>
 
     </application>
 

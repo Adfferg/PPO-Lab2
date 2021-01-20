@@ -1,16 +1,24 @@
 package com.example.task2;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.preference.PreferenceManager;
 
 import java.sql.Time;
 
@@ -20,8 +28,11 @@ public class AddTimer extends AppCompatActivity {
     private int color;
     private int id;
     private DbAdapter dbAdapter;
+    private ScrollView addTimerScrollView;
     EditText nameEditText,preparationEditText,workingTimeEditText,restEditText,cyclesEditText,setsEditText,restBetweenSetsEditText;
-    @SuppressLint("SetTextI18n")
+    TextView addTimerTitle,add_timer_textView1,add_timer_textView2,add_timer_textView3,add_timer_textView4,add_timer_textView5,
+            add_timer_textView6,add_timer_textView7;
+    Button colorButton,saveTimerButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,9 +44,33 @@ public class AddTimer extends AppCompatActivity {
         cyclesEditText = findViewById(R.id.cyclesEditText);
         setsEditText = findViewById(R.id.setsEditText);
         restBetweenSetsEditText = findViewById(R.id.restBetweenSetsEditText);
-        Button colorButton = findViewById(R.id.colorButton);
-        Button saveTimerButton = findViewById(R.id.saveTimerButton);
-        TextView addTimerTitle = findViewById(R.id.addTimerTitle);
+         colorButton = findViewById(R.id.colorButton);
+         saveTimerButton = findViewById(R.id.saveTimerButton);
+         addTimerTitle = findViewById(R.id.addTimerTitle);
+         add_timer_textView1 = findViewById(R.id.add_timer_textView1);
+         add_timer_textView2 = findViewById(R.id.add_timer_textView2);
+         add_timer_textView3 = findViewById(R.id.add_timer_textView3);
+         add_timer_textView4 = findViewById(R.id.add_timer_textView4);
+         add_timer_textView5 = findViewById(R.id.add_timer_textView5);
+         add_timer_textView6 = findViewById(R.id.add_timer_textView6);
+         add_timer_textView7 = findViewById(R.id.add_timer_textView7);
+        addTimerScrollView = findViewById(R.id.addTimerScrollView);
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(this);
+        try
+        {
+            float fontSize = Float.parseFloat(prefs.getString(
+                    getString(R.string.pref_font_size), "0"));
+            changeTextFontSize(fontSize);
+        }
+        catch (Exception ignored)
+        {
+
+        }
+        if (prefs.getBoolean(getString(R.string.pref_dark_theme), false))
+        {
+            setDarkTheme();
+        }
         dbAdapter = new DbAdapter(this);
         colorButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +81,7 @@ public class AddTimer extends AppCompatActivity {
         saveTimerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                try{
                 String name = nameEditText.getText().toString();
                 int preparations = Integer.parseInt(preparationEditText.getText().toString());
                 int workingTime = Integer.parseInt(workingTimeEditText.getText().toString());
@@ -62,7 +98,17 @@ public class AddTimer extends AppCompatActivity {
                     dbAdapter.InsertIntoDb(sequence);
                 }
                 dbAdapter.Close();
-                OpenMainActivity();
+                OpenMainActivity();}
+                catch (Exception exception){
+                    new AlertDialog.Builder(AddTimer.this)
+                            .setTitle(R.string.error)
+                            .setMessage(R.string.error_message)
+                            .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                    dialog.dismiss();
+                                }
+                            }).show();
+                }
             }
         });
         Bundle item = getIntent().getExtras();
@@ -105,6 +151,44 @@ public class AddTimer extends AppCompatActivity {
             }
         });
         colorPicker.show();
+    }
+    private void setDarkTheme(){
+        addTimerScrollView.setBackgroundResource(R.drawable.night_theme);
+        int textColor = ContextCompat.getColor(this, R.color.colorWhite);
+        nameEditText.setTextColor(textColor);
+        preparationEditText.setTextColor(textColor);
+        workingTimeEditText.setTextColor(textColor);
+        restEditText.setTextColor(textColor);
+        cyclesEditText.setTextColor(textColor);
+        setsEditText.setTextColor(textColor);
+        restBetweenSetsEditText.setTextColor(textColor);
+        addTimerTitle.setTextColor(textColor);
+        add_timer_textView1.setTextColor(textColor);
+        add_timer_textView2.setTextColor(textColor);
+        add_timer_textView3.setTextColor(textColor);
+        add_timer_textView4.setTextColor(textColor);
+        add_timer_textView5.setTextColor(textColor);
+        add_timer_textView6.setTextColor(textColor);
+        add_timer_textView7.setTextColor(textColor);
+    }
+    private void changeTextFontSize(float fontSize){
+        nameEditText.setTextSize(14+fontSize);
+        preparationEditText.setTextSize(14+fontSize);
+        workingTimeEditText.setTextSize(14+fontSize);
+        restEditText.setTextSize(14+fontSize);
+        cyclesEditText.setTextSize(14+fontSize);
+        setsEditText.setTextSize(14+fontSize);
+        restBetweenSetsEditText.setTextSize(14+fontSize);
+        colorButton.setTextSize(14+fontSize);
+        saveTimerButton.setTextSize(14+fontSize);
+        addTimerTitle.setTextSize(14+fontSize);
+        add_timer_textView1.setTextSize(14+fontSize);
+        add_timer_textView2.setTextSize(14+fontSize);
+        add_timer_textView3.setTextSize(14+fontSize);
+        add_timer_textView4.setTextSize(14+fontSize);
+        add_timer_textView5.setTextSize(14+fontSize);
+        add_timer_textView6.setTextSize(14+fontSize);
+        add_timer_textView7.setTextSize(14+fontSize);
     }
 
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Timer</string>
+    <string name="app_name">Таймер для тренировок</string>
     <string name="add_timer_title">Добавление таймера</string>
     <string name="add_timer_changing_title">Изменение таймера</string>
     <string name="add_timer_name">Имя таймера</string>
@@ -27,8 +27,13 @@
     <string name="now_playing">Сейчас:</string>
     <string name="settings">Настойки</string>
     <string name="clear_data">Очистить данные</string>
-    <string name="clear_users_data">Хотите очистить все пользовательские данные?</string>
+    <string name="font_size">Размер шрифта</string>
+    <string name="font_size_add">На сколько увеличить размер шрифта?</string>
+    <string name="error">Ошибка</string>
+    <string name="error_message">Не подходящие данные!</string>
+    <string name="ok">ОК</string>
 
+    <string name="pref_font_size" translatable="false">Размер шрифта</string>
     <string name="pref_dark_theme" translatable="false">Тёмная тема</string>
     <string name="pref_language" translatable="false">Язык</string>
     <string name="pref_clear_data" translatable="false">Очистить данные</string>

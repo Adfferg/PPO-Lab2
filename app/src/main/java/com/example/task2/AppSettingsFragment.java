@@ -1,67 +1,98 @@
 package com.example.task2;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.text.Layout;
+import android.widget.LinearLayout;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
+import java.util.Locale;
+
 public class AppSettingsFragment extends PreferenceFragmentCompat {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.settings_prefs, rootKey);
         Preference theme = findPreference(getString(R.string.pref_dark_theme));
-        theme.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
-        {
+        assert theme != null;
+        theme.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue)
-            {
-                if ((boolean)newValue)
-                {
-                    AppCompatDelegate.setDefaultNightMode(
-                            AppCompatDelegate.MODE_NIGHT_YES);
-                }
-                else
-                {
-                    AppCompatDelegate.setDefaultNightMode(
-                            AppCompatDelegate.MODE_NIGHT_NO);
-                }
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                refreshActivity();
                 return true;
             }
         });
         Preference clear_data = findPreference(getString(R.string.pref_clear_data));
-        clear_data.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener()
+        clear_data.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                SharedPreferences prefs = PreferenceManager
+                        .getDefaultSharedPreferences(getContext());
+                prefs.edit().clear().commit();
+                DbAdapter adapter = new DbAdapter(getContext());
+                adapter.Open();
+                adapter.ClearDb();
+                adapter.Close();
+                goToMainActivity();
+                return true;
+
+            }
+        });
+
+       Preference lang = findPreference(getString(R.string.pref_language));
+        lang.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener()
         {
             @Override
-            public boolean onPreferenceClick(Preference preference)
+            public boolean onPreferenceChange(Preference preference, Object newValue)
             {
-                new AlertDialog.Builder(getActivity())
-                        .setTitle(R.string.clear_data)
-                        .setMessage(R.string.clear_users_data)
-                        .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int whichButton) {
-                                SharedPreferences prefs = PreferenceManager
-                                        .getDefaultSharedPreferences(getContext());
-                                prefs.edit().clear().commit();
-                                DbAdapter adapter = new DbAdapter(getContext());
-                                adapter.Open();
-                                adapter.ClearDb();
-                                adapter.Close();
-                                AppCompatDelegate.setDefaultNightMode(
-                                        AppCompatDelegate.MODE_NIGHT_NO);
-                                dialog.dismiss();
-                            }
-                        }).setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        dialog.dismiss();
-                    }
-                }).show();
+                loadLocale((String)newValue);
                 return true;
             }
         });
+    }
+
+    public void loadLocale(String language){
+        switch (language)
+        {
+            case "Русский язык":
+                setLocale("ru");
+                break;
+            case "Беларуская мова":
+                setLocale("be");
+                break;
+            case "English":
+                setLocale("en");
+                break;
+            default:
+                break;
+        }
+    }
+    public void setLocale(String language)
+    {
+        Locale myLocale = new Locale(language);
+        Resources resources = getResources();
+        Configuration config = resources.getConfiguration();
+        config.locale = myLocale;
+        resources.updateConfiguration(config, null);
+        refreshActivity();
+    }
+    public void refreshActivity(){
+        Intent intent = new Intent(this.getActivity(), AppSettings.class);
+        getActivity().finish();
+        startActivity(intent);
+    }
+    public void goToMainActivity(){
+        Intent intent = new Intent(this.getActivity(), MainActivity.class);
+        getActivity().finish();
+        startActivity(intent);
     }
 }

@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.PopupMenu;
 
+import androidx.preference.PreferenceManager;
+
 import java.util.List;
 
 public class ListWithTimersAdapter extends ArrayAdapter<TimerSequence> {
@@ -51,12 +53,9 @@ public class ListWithTimersAdapter extends ArrayAdapter<TimerSequence> {
             @Override
             public void onClick(View v)
             {
-                if(sequence!=null)
-                {
                     Intent intent = new Intent(context, TimerActivity.class);
                     intent.putExtra("id", sequence.id);
                     context.startActivity(intent);
-                }
             }
         });
         itemInListView.deleteItemButton.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +75,18 @@ public class ListWithTimersAdapter extends ArrayAdapter<TimerSequence> {
                 context.startActivity(intent);
             }
         });
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(context);
+        try
+        {
+            float fontSize = Float.parseFloat(prefs.getString(
+                    context.getString(R.string.pref_font_size), "0"));
+            itemInListView.itemTextView.setTextSize(18+fontSize);
+        }
+        catch (Exception ignored)
+        {
+
+        }
         return convertView;
     }
 }

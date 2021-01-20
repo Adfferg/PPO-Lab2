@@ -2,7 +2,9 @@
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/day_theme"
+        android:id="@+id/addTimerScrollView">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,7 +21,7 @@
                 android:text="@string/add_timer_title" />
             <TextView
                 android:gravity="center"
-                android:id="@+id/textView2"
+                android:id="@+id/add_timer_textView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/add_timer_name" />
@@ -34,7 +36,7 @@
                 android:text="@string/add_timer_starting_name" />
             <TextView
                 android:gravity="center"
-                android:id="@+id/textView8"
+                android:id="@+id/add_timer_textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/add_timer_preparations" />
@@ -50,7 +52,7 @@
                 android:text="@string/add_timer_starting_value" />
             <TextView
                 android:gravity="center"
-                android:id="@+id/textView3"
+                android:id="@+id/add_timer_textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/add_timer_working_time" />
@@ -67,7 +69,7 @@
 
             <TextView
                 android:gravity="center"
-                android:id="@+id/textView4"
+                android:id="@+id/add_timer_textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/add_timer_rest" />
@@ -84,7 +86,7 @@
 
             <TextView
                 android:gravity="center"
-                android:id="@+id/textView5"
+                android:id="@+id/add_timer_textView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/add_timer_cycles" />
@@ -101,7 +103,7 @@
 
             <TextView
                 android:gravity="center"
-                android:id="@+id/textView6"
+                android:id="@+id/add_timer_textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/add_timer_sets" />
@@ -118,7 +120,7 @@
 
             <TextView
                 android:gravity="center"
-                android:id="@+id/textView7"
+                android:id="@+id/add_timer_textView7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/add_timer_rest_between_sets" />

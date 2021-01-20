@@ -11,7 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.3"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/day_theme"
+        android:id="@+id/timerTopLayout">
 
         <TextView
             android:id="@+id/blankTextView"
@@ -35,7 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1.5"
         android:gravity="center"
-        android:textSize="80sp" />
+        android:textSize="80sp"
+        android:background="@drawable/day_theme"/>
 
     <TextView
         android:id="@+id/stageNameTextView"
@@ -43,13 +46,15 @@
         android:layout_height="wrap_content"
         android:layout_weight="1.25"
         android:gravity="center"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:background="@drawable/day_theme"/>
 
     <ListView
         android:id="@+id/stagesListView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5">
+        android:layout_weight="5"
+        android:background="@drawable/day_theme">
 
     </ListView>
 
@@ -62,10 +67,12 @@
         />
 
     <LinearLayout
+        android:id="@+id/timerButtonsLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.25"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/day_theme">
 
         <ImageButton
             android:id="@+id/previousStageButton"
