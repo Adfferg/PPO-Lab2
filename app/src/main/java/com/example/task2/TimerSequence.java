@@ -23,9 +23,4 @@ public class TimerSequence {
         this.sets=sets;
         this.restBetweenSets=restBetweenSets;
     }
-
-    @Override
-    public String toString() {
-        return this.name;
-    }
 }

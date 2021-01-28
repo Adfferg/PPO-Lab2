@@ -19,7 +19,7 @@ public class ListWithTimersAdapter extends ArrayAdapter<TimerSequence> {
     private int layout;
     private List<TimerSequence> sequenceList;
     private Context context;
-    private DbAdapter adapter;
+    private DbItemDeleteHelper dbItemDeleteHelper;
 
     ListWithTimersAdapter(Context context, int resource, List<TimerSequence> sequences)
     {
@@ -28,7 +28,7 @@ public class ListWithTimersAdapter extends ArrayAdapter<TimerSequence> {
         this.layout = resource;
         this.inflater = LayoutInflater.from(context);
         this.context = context;
-        adapter = new DbAdapter(context);
+        dbItemDeleteHelper = new DbItemDeleteHelper(context);
     }
     public View getView(int pos, View convertView, ViewGroup parent)
     {
@@ -61,9 +61,7 @@ public class ListWithTimersAdapter extends ArrayAdapter<TimerSequence> {
         itemInListView.deleteItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                adapter.Open();
-                adapter.DeleteItem(sequence.id);
-                adapter.Close();
+                dbItemDeleteHelper.deleteItem(sequence.id);
                 context.startActivity(new Intent(context, MainActivity.class));
             }
         });

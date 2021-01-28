@@ -27,7 +27,7 @@ public class AppSettingsFragment extends PreferenceFragmentCompat {
         theme.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
-                refreshActivity();
+                getActivity().recreate();
                 return true;
             }
         });
@@ -37,7 +37,7 @@ public class AppSettingsFragment extends PreferenceFragmentCompat {
             public boolean onPreferenceClick(Preference preference) {
                 SharedPreferences prefs = PreferenceManager
                         .getDefaultSharedPreferences(getContext());
-                prefs.edit().clear().commit();
+                prefs.edit().clear().apply();
                 DbAdapter adapter = new DbAdapter(getContext());
                 adapter.Open();
                 adapter.ClearDb();
@@ -83,12 +83,7 @@ public class AppSettingsFragment extends PreferenceFragmentCompat {
         Configuration config = resources.getConfiguration();
         config.locale = myLocale;
         resources.updateConfiguration(config, null);
-        refreshActivity();
-    }
-    public void refreshActivity(){
-        Intent intent = new Intent(this.getActivity(), AppSettings.class);
-        getActivity().finish();
-        startActivity(intent);
+        getActivity().recreate();
     }
     public void goToMainActivity(){
         Intent intent = new Intent(this.getActivity(), MainActivity.class);
